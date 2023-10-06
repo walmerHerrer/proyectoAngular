@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">MENU</a>
+    <a class="navbar-brand" href="#" (click)="mostrar='principal'">MENU</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,6 +18,7 @@
   </div>
 </nav>
 <div class="container fluid">
+  <div *ngIf="mostrar ==='principal'"></div>
   <div class="table-responsive" *ngIf="mostrar ==='listar'">
     <table class="table align-middle">
       <thead>
@@ -35,6 +36,21 @@
     </table>
   </div>
   <div *ngIf="mostrar ==='editar'">
+    <form>
+      <div class="row">
+        <div class="mb-3 col-sm-12 col-md-4 col-lg-3" *ngFor="let atributo of dataheader">
+          <label for="{{atributo}}" class="form-label">{{atributo}}</label>
+          <input type="text" class="form-control" id="{{atributo}}" placeholder="{{atributo}}"
+            [value]="dataElement[0][atributo]">
+
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-warning">EDITAR</button>
+      </div>
+
+      <br>
+    </form>
 
   </div>
 </div>
