@@ -13,8 +13,8 @@ export class DrinkService {
     return this.http.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
   }
   //www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007
-  getIDdrinks(parametro: any): Observable<any>{
-    let url = 'www.thecocktaildb.com/api/json/v1/1/lookup.php?';
-    return this.http.post(url,parametro);
+  getIDdrinks(id: any): Observable<any>{
+    let url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='+id;
+    return this.http.get(url);
   }
 }
