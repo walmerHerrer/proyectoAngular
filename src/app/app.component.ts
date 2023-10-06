@@ -16,6 +16,8 @@ export class AppComponent {
 
   }
   editardrink() {
+    this.dataElement = []
+    this.dataheader=[]
     this.mostrar = "editar";
     const parameters = 11007;
     this.drinkService.getIDdrinks(parameters).subscribe(
@@ -23,7 +25,8 @@ export class AppComponent {
         for (let propiedad in response.drinks[0]) {
           this.dataheader.push(propiedad)
         }
-        this.dataElement=response.drinks
+        this.dataElement = response.drinks
+        this.verificartipocampo();
         console.log(this.dataheader,this.dataElement)
       },
       error => {
@@ -31,14 +34,19 @@ export class AppComponent {
       }
     );
   }
+  verificartipocampo() {
+  }
   listardrink() {
     this.mostrar = "listar";
+    this.dataElement = []
+    this.dataheader=[]
     this.drinkService.listdrinksAll().subscribe(
       response => {
 
         for (let propiedad in response.drinks[0]) {
           this.dataheader.push(propiedad)
         }
+
         this.dataElement=response.drinks
         console.log(this.dataheader)
       },
